@@ -20,13 +20,13 @@ iDEA is an open source Python software available on github that uses an interact
 ## The system
 
 The Quantum Harmonic oscillator in 1D has been defined as :
-```math
+' ```math
 v(x,t) = 
 \begin{cases} 
 \frac{1}{2} \omega^2 x^2 + \epsilon x & \text{if } t \leq 0 \\ 
 \frac{1}{2} \omega^2 x^2 & \text{if } t > 0 
 \end{cases}
-'''
+'
 
 This means that when a purtibabting field of '''math - \epsilon x
 
