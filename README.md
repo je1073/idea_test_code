@@ -26,7 +26,7 @@ v(x,t) =
 \frac{1}{2} \omega^2 x^2 + \epsilon x & \text{if } t \leq 0 \\ 
 \frac{1}{2} \omega^2 x^2 & \text{if } t > 0 
 \end{cases}
-'
+```
 
 This means that when a purtibabting field of '''math - \epsilon x
 
