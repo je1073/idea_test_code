@@ -30,6 +30,6 @@ v(x,t) =
 
 This means that when a perturbating field of 
 `$ - \epsilon x $`
-is applied...
+is applied 
 
 
