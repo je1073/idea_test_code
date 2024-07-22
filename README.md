@@ -28,6 +28,6 @@ v(x,t) =
 \end{cases}
 ```
 
-This means that when a purtibabting field of '''math - \epsilon x
+This means that when a purtibabting field of ```math - \epsilon x ```
 
 
