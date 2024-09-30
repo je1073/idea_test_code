@@ -8,7 +8,6 @@ All the work was done myself, Jamie Edwards.
 The code is contained in a mixture of Jupiter notebooks and python files, which should return the achived results if ran.
 
 Also contained is the presentation I performed to the approximately 10 academics of the group I was in, performed after 2 weeks of the project. Alongside this is a recording of my presentation.
-I performed the presentation far faster than I would normally, but did this as a concious decision as I only began the 15 minute plus questions 5 minutes before the meeting was due to end.
 
 ## The project
 
