@@ -28,8 +28,8 @@ v(x,t) =
 \end{cases}
 ```
 
-This means that when a perturbating field of 
-`$ - \epsilon x $`
-is applied 
+This means that when a perturbating field is applied the potential and therefore the resultant wavfunction, and it's derivatives which is what I was actually interested in, will shift. It is due to the  application of this field that the system has a time depandance and ossliates.
+
+
 
 
