@@ -28,7 +28,29 @@ v(x,t) =
 \end{cases}
 ```
 
-This means that when a perturbating field is applied the potential and therefore the resultant wavfunction, and it's derivatives which is what I was actually interested in, will shift. It is due to the  application of this field that the system has a time depandance and ossliates.
+This means that when a perturbating field is applied the potential and therefore the resultant wavfunction, and it's derivatives which is what I was actually interested in, will shift. It is due to the  application of this field that the system has a time depandance and ossliates. This is effect is shown in picture 1, from Hodgson, M. J. P. (2021). 'Analytic solution to the time-dependent Schrödinger equation for the one-dimensional quantum harmonic oscillator with an applied uniform field.'
+
+# Main Findings
+
+I found that iDEA correlates very well with the analytical solution for Quantum Harmonic oscillators of up to and order of 10. The diffrnece between the analytical solution for density and the iDEA prediction was of order e-12, and followed expected trends with respect to large time periods, up to 50 seconds. The energy of the system was found to remain constant, to a level also less than e-12.
+
+
+### Time depenant increases
+
+The point-wise difference between the analytical solution and iDEA was found to increase linearly with time, after 50 seconds of one evolution of a fully converged system the error had inceased from 0 to 3e-12. The energy of the system was found to remain constant, as expected. A small, less than e-12 error, was found for a fully converged system, however this was due to numerical noise rather than problem with iDEA code.
+
+### Analytical terms
+
+I found that approximately 17 terms were required in the analytical solution for it to be converged, at this number of terms the correlations were of the order e-12. Any less terms than 17 and it appeared the differences between iDEA and the analytical solution were due to the truncated analytical solution, not iDEA. Beyond 17 terms in the solution the differences between iDEA and the analytical didn't reduce, and the analytical solution stayed virtually the same, suggesting convergence in analytical terms had been found.
+
+### Convergence
+
+The system was converged with respect to both timesteps and steps in x, this being a 1D system. It was found that steps of were needed for the systems to be converged.
+
+
+
+
+
 
 
 
