@@ -64,11 +64,13 @@ The intergral difference, that is the intergrated difference between the density
 
 ## Terms to check and prove convergence of system
 
-There were a number of terms that I checked for convergence. The main 3 were; x step sise, timestep sise and number of anytical terms in analytic solution. I also checked the sise of system in x, checking for edge effects, the impact of the chosen terms, omega and field strengh as well as the runtime.
+There were a number of terms that I checked for convergence. The main 3 were; x step sise, timestep sise and number of anytical terms in analytic solution. I also checked the sise of system in x, checking for edge effects, omega and field strengh as well as the runtime.
 
 ## Convergence in dx
 
-The convergence of the system with respect to dx was investigated. It was found that the system only became converged to an accatable level beyond 200 terms, that is a dx of 0.2 for the system, to achive the nececarry precision. Beyond 400 terms, a dx of 0.1, there was very little gain in accuracy but significant increases in runtime, therefore a dx of 0.1 was chosen as seen in figure 4 and 5. The significant drop off in return of increasing accracy in term for increasing runtime can be seen in figure 6, this figure also illistrats why a dx of 0.1 was chosen, as the diminihsing returns are very stark.
+The convergence of the system with respect to dx was investigated. It was found that the system only became converged to an accatable level beyond 200 terms, that is a dx of 0.2 for the system, to achive the nececarry precision. Beyond 400 terms, a dx of 0.1, there was very little gain in accuracy but significant increases in runtime, therefore a dx of 0.1 was chosen. This is seen in figure 4 and 5. The significant drop off in return of increasing accuracy in term for increasing runtime can be seen in figure 6, this figure best illistrats why a dx of 0.1 was chosen, as the diminihsing returns are very stark.
+
+In figure 5 the decreasing returns, and actually reduction in accuracy can be seen. Beyond 600 terms, a dx of 0.067, the accuracy actually increases slightly with more terms. This is due to numerical noise, it can also be seen that the shape of the plots changes at N=600, lickley due to numerical noise being the new most significant source of error rather than an unconverged term in the system.
 
 The effect of changing dx on runtime was investigated, as seen in figure 7. A roughly linear realtionship can be seen,in figure 7, as expected. This sugested the system was behaving well and gave confidence the convergence was working.
 
@@ -76,27 +78,36 @@ The effect of changing dx on runtime was investigated, as seen in figure 7. A ro
 
 The convergence of dt was investgated. As can be seen in figure 8 the system dispayed a very simlar trend in the convergance to dx, that is converging quite rapidly up to about a dt of 0.1 and then very limited returns after that. Figure 9 shows how the number of timesteps impacted the intergarl diffrence over time for a otherwise fully converged system. It can be seen that at specific points the overall intergral diffrence reduced to a local minimum, this was attriputed two the two evolutions evolving at very slightly diffrent rates. The diffrence in the positions of these local minima coraspond to the frequency of the system, this suggested that it was due to the two evolutions becoming overlapped as they pass back over each other due to turning at the edge of the system.
 
-A linear realtionship can be seen,in figure 10, for the effect of changing dx on runtime. Like for dx this sugested the system was behaving well and gave confidence the convergence was working.
+A linear realtionship can be seen, in figure 10, for the effect of changing dx on runtime. Like for dx this sugested the system was behaving well and gave confidence the convergence was working.
 
 ## Convergence in number of analytical terms
 
-The number of analytical terms in the solution was found to have a signficant effect on the diffrence between teh iDEA solution and the analytical solution. This meant that while not relevant for the iDEA code as a whole, as there are very few analytical solutions to quantum problems, it did have a significant effect on the testing.
+The number of analytical terms in the solution was found to have a signficant effect on the diffrence between the iDEA solution and the analytical solution. This meant that while not relevant for the iDEA code as a whole, as there are very few analytical solutions to quantum problems, it did have a significant effect on the testing.
 
 It was found, as seen in figure 11, that increasing the number of terms in the anlytical solution significantly reduced the intergral diffrence. To achive the level of accuracy wanted, that is less than e-12, at least 17 terms were required. Also to note the periodicity seen and discussed previosly can again be seen here. Beyond 19 terms there was very little increase in the accuracy but significant increases in runtime, this can be seen in figures 12 and 13. It was because of these significant increases in runtime that 17 terms was the chosen number of terms to use.
 
-The shape of the plots was also investigated. It was found, as can be seen in figure 14 
+The shape of the plots was also investigated. It was found, as can be seen in figure 14 that the peaks have a linear fit. This is expected as numerical noise is relevant at these small values and so this linear increase with time is to be expected.
 
+## Additional findings
 
+It was found that the energy of the system remains constant too. This can be seen in figure 15. There is an oscillation in energy with periodicity equal to that of the evolving wavefunction, but as it is of order e-16 it is considered to be constant as this is less than machine prescison. 
 
-## Impact of other terms
+It was also found that this correlation in the ground state was also true for all states up to t=5. These plots and correlations can be seen in figures 16, 17, 18 and 19. 
 
-## Extra findings
+The plots of intergral difference and difference for the first exciteted state are shown in figures 20 and 21. Comparing them to figures 2 and 3 it can be seen they have similar shapes suggesting that the analysis completed for the ground state also applies to the first excited states. Similar plots were produced for the higher states also.
 
-It was also found that this correlation in the ground state was also true for all states up to t=10.
+## Completed test
 
-# Method
+The completed test code, test_time_evolution_final, can be found attached as a file. This uses pytest to check new updates to iDEA against the analytic solution within a tolerance. The tollarances are set at 5e-13 for the density test and wavefunction at 1e-7, however these are easily changeable within the code. The tests check for numerical accuracy with the observales of density and wavefunction.
 
-### This sections contains a short summary of how my project developed, both as a record and so any future iDEA uses can learn from my mistakes
+## Conclusion
+
+In conclusion I proved that iDEA correlates very well with the analytical solution for Quantum Harmonic oscillator system of up to an order of 5. 
+
+The difference between the analytical solution for density and the iDEA prediction was found to be of order e-12. The solution also followed expected trends with respect to runtime and convergence suggesting that the findings are as predicited.
+
+The tests work well to test against the analytical solution for this system and should work well for tests. 
+
 
 
 
