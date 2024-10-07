@@ -3,9 +3,9 @@
 ## Introduction to the repository
 This is the repository of my work done in my Summer 2024 physics masterclass working on the iDEA code, supervised by Dr. Matt Hodgson.
 
-All the work was done myself, Jamie Edwards.
+All the work was done myself, James (Jamie) Edwards.
 
-The code is contained in a mixture of Jupiter notebooks and python files, which should return the achived results if ran.
+The code is conatined in two python files, one which contains the code to run anaylyis, the other to run the check of any updates to iDEA. If ran they should return the achived results.
 
 Also contained is the presentation I performed to the approximately 10 academics of the group I was in, performed after 2 weeks of the project. Alongside this is a recording of my presentation.
 
@@ -21,7 +21,7 @@ iDEA is an open source Python software available on github that uses an interact
 
 # Main Findings
 
-I found that iDEA correlates very well with the analytical solution for Quantum Harmonic oscillators of up to an order of 10. The differnece between the analytical solution for density and the iDEA prediction was of order e-12, and followed expected trends with respect to large time periods, up to 50 seconds. The energy of the system was found to remain constant, to a level also less than e-12.
+I found that iDEA correlates very well with the analytical solution for Quantum Harmonic oscillators of up to an order of 5. The differnece between the analytical solution for density and the iDEA prediction was of order e-12, and followed expected trends with respect to large time periods, up to 50 seconds. The energy of the system was found to remain constant, to a level also less than e-12.
 
 ### Time depenant increases
 
@@ -29,7 +29,7 @@ The point-wise difference between the analytical solution and iDEA was found to 
 
 ### Analytical terms
 
-I found that approximately 17 terms were required in the analytical solution for it to be converged, at this number of terms the correlations were of the order e-12. Any less terms than 17 and it appeared the differences between iDEA and the analytical solution were due to the truncated analytical solution, not iDEA. Beyond 17 terms in the solution the differences between iDEA and the analytical didn't reduce, and the analytical solution stayed virtually the same, suggesting convergence in analytical terms had been found.
+I found that approximately 17 terms were required in the analytical solution for it to be converged, at this number of terms the correlations were of the order e-12. Any less terms than 17 and it appeared the differences between iDEA and the analytical solution were due to the truncated analytical solution, rather than iDEA. Beyond 17 terms in the solution the differences between iDEA and the analytical didn't reduce, and the analytical solution stayed virtually the same, suggesting convergence in analytical terms had been found.
 
 ### Convergence
 
@@ -58,27 +58,43 @@ The projects main aim was to prove the correlation of iDEA for a single particle
 
 ## Correlation with analytical solution
 
-I showed that the intergral difference between iDEA and the solution was always less than e-12, and often was lower up to e-14, for a system of lengh 40 over time of 50 seconds. The ground state solution can be seen in attachment one, with the difference between the analytical solution and iDEA in attachmnet 2. It can be seen that for both measures of difference are very small suggesting very good corillation.
+I showed that the intergral difference between iDEA and the solution was always less than e-12, and often was lower up to e-14, for a system of lengh 40 over time of 50 seconds. The ground state solution can be seen in figure one, with two measures of difference between the analytical solution and iDEA in figures 2 and 3. It can be seen that for both measures of difference are very small, of order e-12 or less, suggesting very good corillation.
 
-The intergral difference, that is the intergrated difference between the density functions, remains relatively constant over the runtime, with small fluctuations, of order e-15, due to numerical noise. The difference, calculated as the pointwise difference, between the two functions increases over the run time in a linear fashion. These results were took to suggest that the two systems arn't exactly evolving together with time with one oscillating slighty faster than the other. Because the functions are both correct in shape, just are slightly offset, the intergral difference dozen't capture this difference, as the erros cancel out.
+The intergral difference, that is the intergrated difference between the density functions, remains relatively constant over the runtime, with small fluctuations, of order e-15, attributated due to numerical noise. The difference, calculated as the pointwise difference, between the two functions increases over the run time in a linear fashion. These results were took to suggest that the two systems arn't exactly evolving together with time with one oscillating slighty faster than the other. Because the functions are both correct in shape, just are slightly offset, the intergral difference dozen't capture this difference, as the erros always cancel out. The pointwise diffrence does cature these very small diffrences hense the linear increase. However given the small scale of the increase 2.5e-12 over the 50 second run it was concidered to be insignificant for most caculations but could be releveant for exceptionaly long calculations.
 
 ## Terms to check and prove convergence of system
 
-There were a number of terms that I checked for convergence. The main 3 turned out to be ; timestep sise, x step sise and umber of anytical terms in analytical solution. I also checked the sise of system in x, checking for edge effects, the impact of the chosen terms, omega and field strengh as well as the runtime.
-
-## Convergence in number of analytical terms
-
-## Convergence in dt
+There were a number of terms that I checked for convergence. The main 3 were; x step sise, timestep sise and number of anytical terms in analytic solution. I also checked the sise of system in x, checking for edge effects, the impact of the chosen terms, omega and field strengh as well as the runtime.
 
 ## Convergence in dx
 
-## Immpact of other terms
+The convergence of the system with respect to dx was investigated. It was found that the system only became converged to an accatable level beyond 200 terms, that is a dx of 0.2 for the system, to achive the nececarry precision. Beyond 400 terms, a dx of 0.1, there was very little gain in accuracy but significant increases in runtime, therefore a dx of 0.1 was chosen as seen in figure 4 and 5. The significant drop off in return of increasing accracy in term for increasing runtime can be seen in figure 6, this figure also illistrats why a dx of 0.1 was chosen, as the diminihsing returns are very stark.
+
+The effect of changing dx on runtime was investigated, as seen in figure 7. A roughly linear realtionship can be seen,in figure 7, as expected. This sugested the system was behaving well and gave confidence the convergence was working.
+
+## Convergence in dt
+
+The convergence of dt was investgated. As can be seen in figure 8 the system dispayed a very simlar trend in the convergance to dx, that is converging quite rapidly up to about a dt of 0.1 and then very limited returns after that. Figure 9 shows how the number of timesteps impacted the intergarl diffrence over time for a otherwise fully converged system. It can be seen that at specific points the overall intergral diffrence reduced to a local minimum, this was attriputed two the two evolutions evolving at very slightly diffrent rates. The diffrence in the positions of these local minima coraspond to the frequency of the system, this suggested that it was due to the two evolutions becoming overlapped as they pass back over each other due to turning at the edge of the system.
+
+A linear realtionship can be seen,in figure 10, for the effect of changing dx on runtime. Like for dx this sugested the system was behaving well and gave confidence the convergence was working.
+
+## Convergence in number of analytical terms
+
+The number of analytical terms in the solution was found to have a signficant effect on the diffrence between teh iDEA solution and the analytical solution. This meant that while not relevant for the iDEA code as a whole, as there are very few analytical solutions to quantum problems, it did have a significant effect on the testing.
+
+It was found, as seen in figure 11, that increasing the number of terms in the anlytical solution significantly reduced the intergral diffrence. To achive the level of accuracy wanted, that is less than e-12, at least 17 terms were required. Also to note the periodicity seen and discussed previosly can again be seen here. Beyond 19 terms there was very little increase in the accuracy but significant increases in runtime, this can be seen in figures 12 and 13. It was because of these significant increases in runtime that 17 terms was the chosen number of terms to use.
+
+The shape of the plots was also investigated. It was found, as can be seen in figure 14 
+
+
+
+## Impact of other terms
 
 ## Extra findings
 
 It was also found that this correlation in the ground state was also true for all states up to t=10.
 
-# Method and timeline of investigations
+# Method
 
 ### This sections contains a short summary of how my project developed, both as a record and so any future iDEA uses can learn from my mistakes
 
